@@ -10,4 +10,5 @@ require_once __DIR__ . '/../vendor/autoload.php';
 $router = new Router();
 
 $router->get('/', 'HomeController@index');
+$router->get('/login', 'HomeController@login');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
