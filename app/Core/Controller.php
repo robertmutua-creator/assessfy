@@ -4,6 +4,12 @@ namespace App\Core;
 
 abstract class Controller
 {
+    public function __construct()
+    {
+        if (session_status() === PHP_SESSION_NONE) {
+            session_start();
+        }
+    }
     protected function view(string $file, array $data = []): void
     {
         extract($data);

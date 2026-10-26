@@ -1,0 +1,28 @@
+# Dependencies
+/vendor/
+
+# Environment and sensitive configuration
+.env
+config/local.php
+
+# Logs and temporary files
+*.log
+/storage/logs/
+/var/log/
+.tmp/
+tmp/
+
+# Operating System files
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+ehthumbs.db
+Thumbs.db
+
+# IDE and Editor files
+.idea/
+.vscode/
+*.swp
+*.swo
