@@ -57,4 +57,25 @@ abstract class Controller
     {
         return mb_convert_case($value, MB_CASE_TITLE);
     }
+
+    protected function sideBar(): array
+    {
+        $role = $_SESSION['user']['role'] ?? 'guest';
+
+        $links = [
+            'Dashboard' => '/dashboard'
+        ];
+
+        // Role-based menu items
+        switch ($role) {
+            case 'admin':
+                $links['Manage Schools'] = '/admin/schools';
+                $links['Manage School Admins'] = '/admin/admins';
+                break;
+            default:
+                break;
+        }
+
+        return $links;
+    }
 }
