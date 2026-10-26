@@ -41,16 +41,18 @@
 
     <!-- Main App Layout Wrapper -->
     <div class="app-layout">
-        <!-- Sidebar -->
-        <aside id="app-sidebar">
-            <?php if (!empty($sidebar_links)): ?>
-                <?php foreach ($sidebar_links as $label => $url): ?>
-                    <a href="<?= $url ?>" class="<?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === $url) ? 'active' : '' ?>">
-                        <?= htmlspecialchars($label) ?>
-                    </a>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </aside>
+        <!-- Sidebar (Visible only when logged in) -->
+        <?php if (!empty($auth_user)): ?>
+            <aside id="app-sidebar">
+                <?php if (!empty($sidebar_links)): ?>
+                    <?php foreach ($sidebar_links as $label => $url): ?>
+                        <a href="<?= $url ?>" class="<?= (parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH) === $url) ? 'active' : '' ?>">
+                            <?= htmlspecialchars($label) ?>
+                        </a>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </aside>
+        <?php endif; ?>
 
         <!-- Main Content Area -->
         <main>
