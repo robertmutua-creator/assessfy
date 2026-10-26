@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title><?= htmlspecialchars($title ?? 'Assessfy') ?></title>
-    <link rel="stylesheet" href="/css/app.css">
+    <link rel="stylesheet" href="/assets/app.css">
 </head>
 
 <body>
@@ -65,7 +65,7 @@
         &copy; <?= date('Y') ?> Assessfy. All rights reserved.
     </footer>
 
-    <script src="/js/app.js"></script>
+    <script src="/assets/app.js"></script>
 </body>
 
 </html>
