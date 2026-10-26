@@ -12,4 +12,7 @@ $router = new Router();
 $router->get('/', 'HomeController@index');
 $router->get('/login', 'HomeController@login');
 $router->post('/login', 'HomeController@login');
+
+$router->get('/setup', 'SetupController@tables');
+$router->get('/seed', 'SetupController@seed');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
