@@ -31,12 +31,18 @@
 
     <!-- Flash Messages -->
     <?php if (!empty($_SESSION['flash'])): ?>
-        <div style="padding: 0.75rem 1.5rem; background: #f0fdf4; border-bottom: 1px solid #bbf7d0; color: #166534; font-size: 0.9rem;">
-            <?php foreach ($_SESSION['flash'] as $message): ?>
-                <div><?= htmlspecialchars($message) ?></div>
-            <?php endforeach; ?>
-            <?php unset($_SESSION['flash']); ?>
-        </div>
+        <?php foreach ($_SESSION['flash'] as $type => $message): ?>
+            <?php
+            $isError = ($type === 'error');
+            $bgColor = $isError ? '#fef2f2' : '#f0fdf4';
+            $borderColor = $isError ? '#fecaca' : '#bbf7d0';
+            $textColor = $isError ? '#991b1b' : '#166534';
+            ?>
+            <div style="padding: 0.75rem 1.5rem; background: <?= $bgColor ?>; border-bottom: 1px solid <?= $borderColor ?>; color: <?= $textColor ?>; font-size: 0.9rem;">
+                <?= htmlspecialchars($message) ?>
+            </div>
+        <?php endforeach; ?>
+        <?php unset($_SESSION['flash']); ?>
     <?php endif; ?>
 
     <!-- Main App Layout Wrapper -->

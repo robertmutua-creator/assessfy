@@ -11,4 +11,5 @@ $router = new Router();
 
 $router->get('/', 'HomeController@index');
 $router->get('/login', 'HomeController@login');
+$router->post('/login', 'HomeController@login');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
