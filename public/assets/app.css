@@ -228,6 +228,46 @@ tr:hover td {
     background: var(--gray);
 }
 
+/* Landing Page Component */
+.landing-hero {
+    max-width: 800px;
+    margin: 4rem auto;
+    text-align: center;
+    padding: 0 1rem;
+}
+
+.landing-title {
+    font-size: 2.5rem;
+    font-weight: 800;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.text-green {
+    color: var(--green);
+}
+
+.landing-subtitle {
+    font-size: 1.15rem;
+    color: #4b5563;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+}
+
+.landing-actions {
+    display: flex;
+    gap: 1rem;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* Ensure buttons acting as links handle text decoration */
+.btn {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
 /* Responsive Breakpoint */
 @media (max-width: 768px) {
     .hamburger {
