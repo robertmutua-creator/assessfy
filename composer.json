@@ -1,0 +1,17 @@
+{
+    "name": "robert/assessfy",
+    "type": "project",
+    "autoload": {
+        "psr-4": {
+            "App\\": "app/"
+        }
+    },
+    "authors": [
+        {
+            "name": "Robert",
+            "email": "robertmutua95@gmail.com"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {}
+}
