@@ -78,4 +78,14 @@ abstract class Controller
 
         return $links;
     }
+
+    protected function isLoggedIn(): bool
+    {
+        return !empty($_SESSION['user']);
+    }
+
+    protected function checkRole(string $role): bool
+    {
+        return $this->isLoggedIn() && ($_SESSION['user']['role'] ?? '') === $role;
+    }
 }
