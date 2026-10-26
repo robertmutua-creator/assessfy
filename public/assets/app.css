@@ -1,0 +1,248 @@
+:root {
+    --green: #16a34a;
+    --black: #111827;
+    --white: #ffffff;
+    --gray: #f9fafb;
+    --border: #e5e7eb;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: system-ui, -apple-system, sans-serif;
+}
+
+body {
+    background: var(--white);
+    color: var(--black);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+/* Top Sticky Header */
+header {
+    position: sticky;
+    top: 0;
+    background: var(--black);
+    color: var(--white);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.75rem 1.25rem;
+    z-index: 1000;
+}
+
+.brand-area {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: var(--white);
+    font-size: 1.25rem;
+    cursor: pointer;
+    display: none;
+}
+
+.app-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+/* Profile Dropdown */
+.profile-menu {
+    position: relative;
+}
+
+.profile-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+}
+
+.profile-img {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    object-fit: cover;
+    border: 2px solid var(--green);
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute;
+    right: 0;
+    top: 45px;
+    background: var(--white);
+    color: var(--black);
+    box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    min-width: 140px;
+    overflow: hidden;
+    border: 1px solid var(--border);
+}
+
+.dropdown-content.show {
+    display: block;
+}
+
+.dropdown-content a {
+    display: block;
+    padding: 0.65rem 1rem;
+    text-decoration: none;
+    color: var(--black);
+    font-size: 0.9rem;
+}
+
+.dropdown-content a:hover {
+    background: var(--gray);
+    color: var(--green);
+}
+
+/* Layout Grid */
+.app-layout {
+    display: flex;
+    flex: 1;
+}
+
+aside {
+    width: 240px;
+    background: var(--gray);
+    border-right: 1px solid var(--border);
+    padding: 1.25rem 0.75rem;
+    transition: transform 0.2s ease-in-out;
+}
+
+aside a {
+    display: block;
+    padding: 0.6rem 0.85rem;
+    color: var(--black);
+    text-decoration: none;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+    font-size: 0.95rem;
+}
+
+aside a:hover, aside a.active {
+    background: var(--green);
+    color: var(--white);
+}
+
+main {
+    flex: 1;
+    padding: 1.5rem;
+    overflow-x: auto;
+    max-width: 100%;
+}
+
+footer {
+    background: var(--black);
+    color: var(--white);
+    text-align: center;
+    padding: 0.75rem;
+    font-size: 0.85rem;
+}
+
+/* Reusable Inline Forms & Tables */
+.card-form {
+    background: var(--gray);
+    padding: 1.25rem;
+    border-radius: 6px;
+    margin-bottom: 1.5rem;
+    border: 1px solid var(--border);
+}
+
+.form-row {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    align-items: flex-end;
+}
+
+.form-group {
+    flex: 1;
+    min-width: 200px;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.form-group label {
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
+.form-group input, .form-group select {
+    padding: 0.55rem;
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    font-size: 0.9rem;
+    background: var(--white);
+}
+
+.btn {
+    background: var(--green);
+    color: var(--white);
+    border: none;
+    padding: 0.55rem 1.2rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: 600;
+    height: 38px;
+    font-size: 0.9rem;
+}
+
+.btn:hover {
+    opacity: 0.9;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 1rem;
+    font-size: 0.9rem;
+    background: var(--white);
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--border);
+}
+
+th {
+    background: var(--black);
+    color: var(--white);
+    font-weight: 600;
+}
+
+tr:hover td {
+    background: var(--gray);
+}
+
+/* Responsive Breakpoint */
+@media (max-width: 768px) {
+    .hamburger {
+        display: block;
+    }
+    aside {
+        position: fixed;
+        top: 57px;
+        bottom: 0;
+        left: -240px;
+        z-index: 999;
+        background: var(--white);
+        box-shadow: 4px 0 10px rgba(0,0,0,0.1);
+    }
+    aside.open {
+        transform: translateX(240px);
+    }
+}
