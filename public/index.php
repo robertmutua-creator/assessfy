@@ -15,4 +15,6 @@ $router->post('/login', 'HomeController@login');
 
 $router->get('/setup', 'SetupController@tables');
 $router->get('/seed', 'SetupController@seed');
+
+$router->get('/dashboard', 'DashboardController@index');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);
