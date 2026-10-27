@@ -17,9 +17,12 @@ class DashboardController extends Controller
     public function index(): void
     {
         $role = $_SESSION['user']['role'] ?? '';
+        $data = [];
         switch ($role) {
             case 'admin':
-                echo 'Welcome Admin';
+                $data['title'] = 'Admin Dashboard';
+                $data['auth_user'] = $_SESSION['user'];
+                $this->view('admin/index', $data);
                 break;
 
             default:
