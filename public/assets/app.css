@@ -228,6 +228,50 @@ tr:hover td {
     background: var(--gray);
 }
 
+.actions {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.actions form {
+    margin: 0;
+}
+
+.action {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 34px;
+    padding: 0.4rem 0.75rem;
+    border: 1px solid transparent;
+    border-radius: 4px;
+    color: var(--white);
+    font: inherit;
+    font-size: 0.85rem;
+    font-weight: 600;
+    line-height: 1;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.action-edit {
+    background: var(--green);
+}
+
+.action-delete {
+    background: #dc2626;
+}
+
+.action:hover {
+    opacity: 0.88;
+}
+
+.action:focus-visible {
+    outline: 2px solid var(--black);
+    outline-offset: 2px;
+}
+
 /* Landing Page Component */
 .landing-hero {
     max-width: 800px;
