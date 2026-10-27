@@ -41,48 +41,50 @@
     </form>
 
     <h2>Current Schools</h2>
-    <table>
-        <thead>
-            <tr>
-                <th>Name</th>
-                <th>Address</th>
-                <th>Logo</th>
-                <th>Status</th>
-                <th>Created</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <?php if (empty($schools)): ?>
+    <div class="table-scroll">
+        <table>
+            <thead>
                 <tr>
-                    <td colspan="6">No schools found.</td>
+                    <th>Name</th>
+                    <th>Address</th>
+                    <th>Logo</th>
+                    <th>Status</th>
+                    <th>Created</th>
+                    <th>Actions</th>
                 </tr>
-            <?php else: ?>
-                <?php foreach ($schools as $record): ?>
+            </thead>
+            <tbody>
+                <?php if (empty($schools)): ?>
                     <tr>
-                        <td><?= htmlspecialchars($record['name'], ENT_QUOTES, 'UTF-8') ?></td>
-                        <td><?= htmlspecialchars($record['address'], ENT_QUOTES, 'UTF-8') ?></td>
-                        <td>
-                            <?php if (!empty($record['logo_path'])): ?>
-                                <a href="<?= htmlspecialchars($record['logo_path'], ENT_QUOTES, 'UTF-8') ?>">View logo</a>
-                            <?php else: ?>
-                                &mdash;
-                            <?php endif; ?>
-                        </td>
-                        <td><?= htmlspecialchars(ucfirst($record['status']), ENT_QUOTES, 'UTF-8') ?></td>
-                        <td><?= htmlspecialchars($record['created_at'], ENT_QUOTES, 'UTF-8') ?></td>
-                        <td>
-                            <div class="actions">
-                                <a class="action action-edit" href="/admin/schools/edit/<?= rawurlencode((string) $record['id']) ?>">Edit</a>
-                                <form action="/admin/schools/delete/<?= rawurlencode((string) $record['id']) ?>" method="post" onsubmit="return confirmDelete('Are you sure you want to delete this school?')">
-                                    <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
-                                    <button class="action action-delete" type="submit">Delete</button>
-                                </form>
-                            </div>
-                        </td>
+                        <td colspan="6">No schools found.</td>
                     </tr>
-                <?php endforeach; ?>
-            <?php endif; ?>
-        </tbody>
-    </table>
+                <?php else: ?>
+                    <?php foreach ($schools as $record): ?>
+                        <tr>
+                            <td><?= htmlspecialchars($record['name'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= htmlspecialchars($record['address'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td>
+                                <?php if (!empty($record['logo_path'])): ?>
+                                    <a href="<?= htmlspecialchars($record['logo_path'], ENT_QUOTES, 'UTF-8') ?>">View logo</a>
+                                <?php else: ?>
+                                    &mdash;
+                                <?php endif; ?>
+                            </td>
+                            <td><?= htmlspecialchars(ucfirst($record['status']), ENT_QUOTES, 'UTF-8') ?></td>
+                            <td><?= htmlspecialchars($record['created_at'], ENT_QUOTES, 'UTF-8') ?></td>
+                            <td>
+                                <div class="actions">
+                                    <a class="action action-edit" href="/admin/schools/edit/<?= rawurlencode((string) $record['id']) ?>">Edit</a>
+                                    <form action="/admin/schools/delete/<?= rawurlencode((string) $record['id']) ?>" method="post" onsubmit="return confirmDelete('Are you sure you want to delete this school?')">
+                                        <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
+                                        <button class="action action-delete" type="submit">Delete</button>
+                                    </form>
+                                </div>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                <?php endif; ?>
+            </tbody>
+        </table>
+    </div>
 </section>

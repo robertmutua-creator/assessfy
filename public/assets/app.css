@@ -204,10 +204,19 @@ footer {
     opacity: 0.9;
 }
 
-table {
-    width: 100%;
-    border-collapse: collapse;
+.table-scroll {
+    max-width: 100%;
+    max-height: 65vh;
     margin-top: 1rem;
+    overflow: auto;
+    overscroll-behavior: contain;
+}
+
+.table-scroll table {
+    width: 100%;
+    min-width: 700px;
+    border-collapse: collapse;
+    margin-top: 0;
     font-size: 0.9rem;
     background: var(--white);
 }
@@ -222,6 +231,12 @@ th {
     background: var(--black);
     color: var(--white);
     font-weight: 600;
+}
+
+.table-scroll th {
+    position: sticky;
+    top: 0;
+    z-index: 1;
 }
 
 tr:hover td {

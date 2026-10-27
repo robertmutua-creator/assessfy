@@ -1,2 +1,5 @@
 [27-Oct-2026 09:26:23 UTC] Testing logs
 [27-Oct-2026 09:26:23 UTC] Testing logs
+[27-Oct-2026 10:02:05 UTC] School admin created for school ID 1.
+[27-Oct-2026 10:02:31 UTC] School admin created for school ID 2.
+[27-Oct-2026 10:14:20 UTC] PHP Warning:  preg_replace(): Allocation of JIT memory failed, PCRE JIT will be disabled. This is likely caused by security restrictions. Either grant PHP permission to allocate executable memory, or set pcre.jit=0 in /var/www/assessfy/app/Core/Router.php on line 32

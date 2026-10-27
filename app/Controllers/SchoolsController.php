@@ -68,8 +68,10 @@ class SchoolsController extends Controller
 
         if (!empty($_FILES['logo']) && $_FILES['logo']['error'] === UPLOAD_ERR_OK) {
             $uploadedPath = $this->handleFileUpload($_FILES['logo'], '/uploads/logos/');
-
             if ($uploadedPath !== null) {
+                if (!empty($existingSchool['logo_path'])) {
+                    $this->deleteFile($existingSchool['logo_path']);
+                }
                 $logoPath = $uploadedPath;
             } else {
                 $this->redirect($id ? "/admin/schools/edit/{$id}" : "/admin/schools");
@@ -102,6 +104,10 @@ class SchoolsController extends Controller
             return;
         }
 
+        $school = $this->schools->find($id);
+        if ($school && !empty($school['logo_path'])) {
+            $this->deleteFile($school['logo_path']);
+        }
         if (!$this->validateCsrfToken($_POST['csrf_token'] ?? '')) {
             error_log('Invalid security token submitted while deleting a school.');
             $this->flash('error');

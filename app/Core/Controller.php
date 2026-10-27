@@ -153,4 +153,22 @@ abstract class Controller
 
         return '/' . trim($path, '/') . '/' . $filename;
     }
+
+    protected function deleteFile(?string $filePath): void
+    {
+        if (empty($filePath)) {
+            return;
+        }
+
+        // Define the allowed base directory
+        $publicDir = realpath(dirname(__DIR__, 2) . '/public');
+
+        // Resolve the absolute path of the file safely
+        $absolutePath = realpath($publicDir . '/' . ltrim($filePath, '/'));
+
+        // Ensure the file exists, is actually a file, and is strictly located within public/uploads/
+        if ($absolutePath && str_starts_with($absolutePath, $publicDir . '/uploads/') && is_file($absolutePath)) {
+            unlink($absolutePath);
+        }
+    }
 }
