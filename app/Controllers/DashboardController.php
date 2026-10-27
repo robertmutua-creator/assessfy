@@ -3,8 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
-use App\Model\Schools;
-use App\Model\Users;
+use App\Models\Schools;
+use App\Models\Users;
 
 class DashboardController extends Controller
 {

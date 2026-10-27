@@ -3,7 +3,6 @@
 namespace App\Controllers;
 
 use App\Core\Migrations;
-use App\Model\Users;
 
 class SetupController
 {

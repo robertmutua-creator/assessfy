@@ -18,4 +18,8 @@ $router->get('/setup', 'SetupController@tables');
 $router->get('/seed', 'SetupController@seed');
 
 $router->get('/dashboard', 'DashboardController@index');
+$router->get('/admin/schools', 'SchoolsController@index');
+$router->get('/admin/schools/edit/{id}', 'SchoolsController@edit');
+$router->post('/admin/schools/save', 'SchoolsController@save');
+$router->post('/admin/schools/delete/{id}', 'SchoolsController@delete');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

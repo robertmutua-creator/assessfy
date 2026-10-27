@@ -21,6 +21,7 @@ class Migrations
                 id INT AUTO_INCREMENT PRIMARY KEY,
                 name VARCHAR(255) NOT NULL,
                 address VARCHAR(255) NOT NULL,
+                logo_path VARCHAR(255) DEFAULT NULL,
                 status ENUM('active','inactive') DEFAULT 'active',
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             ) ENGINE=InnoDB;",
