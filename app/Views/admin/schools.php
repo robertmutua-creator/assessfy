@@ -71,7 +71,7 @@
                         <td><?= htmlspecialchars($record['created_at'], ENT_QUOTES, 'UTF-8') ?></td>
                         <td>
                             <a href="/admin/schools/edit/<?= rawurlencode((string) $record['id']) ?>">Edit</a>
-                            <form action="/admin/schools/delete/<?= rawurlencode((string) $record['id']) ?>" method="post">
+                            <form action="/admin/schools/delete/<?= rawurlencode((string) $record['id']) ?>" method="post" onsubmit="return confirmDelete('Are you sure you want to delete this school?')">
                                 <input type="hidden" name="csrf_token" value="<?= htmlspecialchars($csrf_token, ENT_QUOTES, 'UTF-8') ?>">
                                 <button type="submit">Delete</button>
                             </form>

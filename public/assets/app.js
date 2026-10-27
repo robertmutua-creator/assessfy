@@ -1,3 +1,7 @@
+function confirmDelete(message = 'Are you sure you want to delete this record?') {
+    return window.confirm(message);
+}
+
 document.addEventListener('DOMContentLoaded', () => {
     const hamburger = document.getElementById('hamburger-btn');
     const sidebar = document.getElementById('app-sidebar');
