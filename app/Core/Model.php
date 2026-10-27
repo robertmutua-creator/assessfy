@@ -125,4 +125,24 @@ abstract class Model
             throw $e;
         }
     }
+
+    public function count(array $criteria = []): int
+    {
+        $sql = "SELECT COUNT(*) FROM {$this->table}";
+        $params = [];
+
+        if (!empty($criteria)) {
+            $clauses = [];
+            foreach ($criteria as $column => $value) {
+                $clauses[] = "{$column} = ?";
+                $params[] = $value;
+            }
+            $sql .= " WHERE " . implode(" AND ", $clauses);
+        }
+
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($params);
+
+        return (int) $stmt->fetchColumn();
+    }
 }
