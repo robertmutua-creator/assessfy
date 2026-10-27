@@ -14,10 +14,6 @@
         <div class="stat-value"><?= htmlspecialchars($total_users ?? 0) ?></div>
     </div>
     <div class="stat-card">
-        <h3>Active Admins</h3>
-        <div class="stat-value"><?= htmlspecialchars($total_admins ?? 0) ?></div>
-    </div>
-    <div class="stat-card">
         <h3>System Status</h3>
         <div class="stat-value stat-value-status">
             <span class="status-dot"></span>

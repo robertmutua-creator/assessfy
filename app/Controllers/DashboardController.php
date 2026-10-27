@@ -3,6 +3,8 @@
 namespace App\Controllers;
 
 use App\Core\Controller;
+use App\Model\Schools;
+use App\Model\Users;
 
 class DashboardController extends Controller
 {
@@ -20,6 +22,8 @@ class DashboardController extends Controller
         switch ($role) {
             case 'admin':
                 $data['title'] = 'Admin Dashboard';
+                $data['total_schools'] = (new Schools())->count(['status' => 'active']);
+                $data['total_users'] = (new Users())->count();
                 $this->view('admin/index', $data);
                 break;
 
