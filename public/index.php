@@ -22,4 +22,8 @@ $router->get('/admin/schools', 'SchoolsController@index');
 $router->get('/admin/schools/edit/{id}', 'SchoolsController@edit');
 $router->post('/admin/schools/save', 'SchoolsController@save');
 $router->post('/admin/schools/delete/{id}', 'SchoolsController@delete');
+$router->get('/admin/users', 'UsersController@index');
+$router->get('/admin/users/edit/{id}', 'UsersController@edit');
+$router->post('/admin/users/save', 'UsersController@save');
+$router->post('/admin/users/delete/{id}', 'UsersController@delete');
 $router->dispatch($_SERVER['REQUEST_URI'], $_SERVER['REQUEST_METHOD']);

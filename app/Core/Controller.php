@@ -74,7 +74,7 @@ abstract class Controller
         switch ($role) {
             case 'admin':
                 $links['Manage Schools'] = '/admin/schools';
-                $links['Manage School Admins'] = '/admin/admins';
+                $links['Manage School Admins'] = '/admin/users';
                 break;
             default:
                 break;
