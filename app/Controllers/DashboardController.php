@@ -17,11 +17,11 @@ class DashboardController extends Controller
     public function index(): void
     {
         $role = $_SESSION['user']['role'] ?? '';
-        $data = [];
         switch ($role) {
             case 'admin':
                 $data['title'] = 'Admin Dashboard';
-                $data['auth_user'] = $_SESSION['user'];
+                // $data['auth_user'] = $_SESSION['user'];
+                // $data['links'] = $this->sideBar();
                 $this->view('admin/index', $data);
                 break;
 

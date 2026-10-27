@@ -12,8 +12,9 @@ abstract class Controller
     }
     protected function view(string $file, array $data = []): void
     {
+        $data['auth_user'] = $_SESSION['user'] ?? null;
+        $data['sidebar_links'] = $this->sideBar();
         extract($data);
-
         $viewPath = dirname(__DIR__) . "/Views/{$file}.php";
         $layoutFile = dirname(__DIR__) . "/Views/layouts/main.php";
 
