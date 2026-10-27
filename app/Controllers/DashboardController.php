@@ -20,8 +20,6 @@ class DashboardController extends Controller
         switch ($role) {
             case 'admin':
                 $data['title'] = 'Admin Dashboard';
-                // $data['auth_user'] = $_SESSION['user'];
-                // $data['links'] = $this->sideBar();
                 $this->view('admin/index', $data);
                 break;
 

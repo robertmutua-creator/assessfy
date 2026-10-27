@@ -268,6 +268,87 @@ tr:hover td {
     align-items: center;
     justify-content: center;
 }
+
+/* Admin Dashboard Component */
+.dashboard-header {
+    margin-bottom: 1.5rem;
+}
+
+.page-title {
+    font-size: 1.75rem;
+    font-weight: 800;
+    color: var(--black);
+    margin-bottom: 0.25rem;
+}
+
+.page-subtitle {
+    color: #4b5563;
+    font-size: 0.95rem;
+}
+
+.stats-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.25rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background: var(--white);
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 1.25rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+}
+
+.stat-card h3 {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #4b5563;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 0.5rem;
+}
+
+.stat-value {
+    font-size: 1.8rem;
+    font-weight: 800;
+    color: var(--black);
+}
+
+.stat-value-status {
+    font-size: 1.25rem;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 0.35rem;
+}
+
+.status-dot {
+    width: 10px;
+    height: 10px;
+    background: var(--green);
+    border-radius: 50%;
+    display: inline-block;
+}
+
+.card-form-title {
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--black);
+}
+
+.dashboard-actions {
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+}
+
+.btn-dark {
+    background: var(--black);
+}
 /* Responsive Breakpoint */
 @media (max-width: 768px) {
     .hamburger {
