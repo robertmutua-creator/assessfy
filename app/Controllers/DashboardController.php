@@ -12,7 +12,7 @@ class DashboardController extends Controller
     {
         parent::__construct();
         if ($this->isLoggedIn() === false) {
-            $this->setFlash('error', 'You must be logged in!');
+            $this->flash('error', 'You must be logged in!');
             $this->redirect('/login');
         }
     }

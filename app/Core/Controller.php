@@ -37,14 +37,16 @@ abstract class Controller
         exit;
     }
 
-    protected function setFlash(string $type, string $message): void
+    protected function flash(string $type, ?string $message = null): void
     {
         if (session_status() === PHP_SESSION_NONE) {
             session_start();
         }
-        $_SESSION['flash'][$type] = $message;
+        if (!in_array($type, ['success', 'error'], true)) {
+            throw new \InvalidArgumentException('Unsupported flash message type.');
+        }
+        $_SESSION['flash'][$type] = $message ?? ($type === 'success' ? 'Success' : 'Fail');
     }
-
     protected function toUpper(string $value): string
     {
         return mb_strtoupper($value);
@@ -115,7 +117,7 @@ abstract class Controller
 
         $maxFileSize = 2 * 1024 * 1024;
         if ($file['size'] > $maxFileSize) {
-            $this->setFlash('error', 'File size exceeds the maximum allowed limit of 2MB.');
+            $this->flash('error', 'File size exceeds the maximum allowed limit of 2MB.');
             return null;
         }
 
@@ -123,7 +125,7 @@ abstract class Controller
         $extension = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
 
         if (!in_array($extension, $allowedExtensions)) {
-            $this->setFlash('error', 'Invalid file type. Only JPG, JPEG, PNG, and WEBP files are allowed.');
+            $this->flash('error', 'Invalid file type. Only JPG, JPEG, PNG, and WEBP files are allowed.');
             return null;
         }
 
@@ -132,7 +134,7 @@ abstract class Controller
         $allowedMimeTypes = ['image/jpeg', 'image/png', 'image/webp'];
 
         if (!in_array($mimeType, $allowedMimeTypes)) {
-            $this->setFlash('error', 'Invalid file content detected.');
+            $this->flash('error', 'Invalid file content detected.');
             return null;
         }
 
@@ -145,7 +147,7 @@ abstract class Controller
         $targetFilePath = $absolutePath . '/' . $filename;
 
         if (!move_uploaded_file($file['tmp_name'], $targetFilePath)) {
-            $this->setFlash('error', 'Failed to save the uploaded file.');
+            $this->flash('error', 'Failed to save the uploaded file.');
             return null;
         }
 

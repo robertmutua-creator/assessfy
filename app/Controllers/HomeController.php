@@ -19,25 +19,25 @@ class HomeController extends Controller
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $token = $_POST['csrf_token'] ?? '';
             if (!$this->validateCsrfToken($token)) {
-                $this->setFlash('error', 'Invalid security token. Please try again.');
+                $this->flash('error', 'Invalid security token. Please try again.');
                 $this->redirect('/login');
             }
             $username = $this->toLower($_POST['username'] ?? '');
             $password = $_POST['password'] ?? '';
 
             if (!$username || !$password) {
-                $this->setFlash('error', 'All fields required.');
+                $this->flash('error', 'All fields required.');
                 $this->redirect('/login');
             }
 
             $user = (new Users())->getUserByUsername($username);
             if (!$user || !password_verify($password, $user['password'])) {
-                $this->setFlash('error', 'Incorrect credentials.');
+                $this->flash('error', 'Incorrect credentials.');
                 $this->redirect('/login');
             }
             unset($user['password']);
             $_SESSION['user'] = $user;
-            $this->setFlash('success', 'Logged in successfully.');
+            $this->flash('success', 'Logged in successfully.');
             $this->redirect('/dashboard');
         } else {
             $this->view('auth/login', [
@@ -63,7 +63,7 @@ class HomeController extends Controller
         }
         session_destroy();
 
-        $this->setFlash('success', 'Logged out successfully.');
+        $this->flash('success', 'Logged out successfully.');
         $this->redirect('/login');
     }
 }
