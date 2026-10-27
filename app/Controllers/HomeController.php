@@ -17,6 +17,11 @@ class HomeController extends Controller
     public function login(): void
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            $token = $_POST['csrf_token'] ?? '';
+            if (!$this->validateCsrfToken($token)) {
+                $this->setFlash('error', 'Invalid security token. Please try again.');
+                $this->redirect('/login');
+            }
             $username = $this->toLower($_POST['username'] ?? '');
             $password = $_POST['password'] ?? '';
 

@@ -14,6 +14,7 @@ abstract class Controller
     {
         $data['auth_user'] = $_SESSION['user'] ?? null;
         $data['sidebar_links'] = $this->sideBar();
+        $data['csrf_token'] = $this->csrfToken();
         extract($data);
         $viewPath = dirname(__DIR__) . "/Views/{$file}.php";
         $layoutFile = dirname(__DIR__) . "/Views/layouts/main.php";
@@ -88,5 +89,21 @@ abstract class Controller
     protected function checkRole(string $role): bool
     {
         return $this->isLoggedIn() && ($_SESSION['user']['role'] ?? '') === $role;
+    }
+
+    protected function csrfToken(): string
+    {
+        if (empty($_SESSION['csrf_token'])) {
+            $_SESSION['csrf_token'] = bin2hex(random_bytes(32));
+        }
+        return $_SESSION['csrf_token'];
+    }
+
+    protected function validateCsrfToken(?string $token): bool
+    {
+        if (empty($_SESSION['csrf_token']) || empty($token)) {
+            return false;
+        }
+        return hash_equals($_SESSION['csrf_token'], $token);
     }
 }

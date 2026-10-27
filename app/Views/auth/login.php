@@ -14,7 +14,7 @@
                 <label for="password">Password</label>
                 <input type="password" id="password" name="password" required>
             </div>
-
+            <input type="hidden" name="csrf_token" value="<?= isset($csrf_token) ? htmlspecialchars($csrf_token) : '' ?>">
             <button type="submit" class="btn" style="width: 100%;">Login</button>
         </form>
     </div>
