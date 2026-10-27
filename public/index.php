@@ -12,6 +12,7 @@ $router = new Router();
 $router->get('/', 'HomeController@index');
 $router->get('/login', 'HomeController@login');
 $router->post('/login', 'HomeController@login');
+$router->get('/logout', 'HomeController@logout');
 
 $router->get('/setup', 'SetupController@tables');
 $router->get('/seed', 'SetupController@seed');
